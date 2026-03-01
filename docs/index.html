@@ -6,6 +6,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Weights</title>
+    <link rel="icon" href="./favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <script type="module" crossorigin>(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))r(n);new MutationObserver(n=>{for(const e of n)if(e.type==="childList")for(const f of e.addedNodes)f.tagName==="LINK"&&f.rel==="modulepreload"&&r(f)}).observe(document,{childList:!0,subtree:!0});function s(n){const e={};return n.integrity&&(e.integrity=n.integrity),n.referrerPolicy&&(e.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?e.credentials="include":n.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function r(n){if(n.ep)return;n.ep=!0;const e=s(n);fetch(n.href,e)}})();const g="dumbbell-tracker",a=[];for(let t=0;t<=7;t++)for(let i=0;i<=2;i++)a.push(15+t*10+i*2.5);const h=15;function b(){try{const t=localStorage.getItem(g);return t?JSON.parse(t):[]}catch{return[]}}function u(t){localStorage.setItem(g,JSON.stringify(t))}function E(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}function y(t){return t%1===0?t.toString():t.toFixed(1)}let o=b(),l=null;const c=document.getElementById("exercise-list"),L=document.getElementById("empty-state");function d(){L.classList.toggle("hidden",o.length>0),c.innerHTML="",o.forEach(i=>{const s=document.createElement("li");s.className="exercise-card";const r=a.indexOf(i.weight),n=r<=0,e=r>=a.length-1;s.innerHTML=`
       <button class="exercise-name" data-id="${i.id}" data-action="rename">${v(i.name)}</button>
       <div class="weight-controls">
