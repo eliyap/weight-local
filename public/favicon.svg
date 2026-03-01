@@ -1,3 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAEbUlEQVR4nO2Wy27bRhSG9Sjtwk4dUTMZkkPaRTdZuBcUyKKAK4q2LKlGLI8pNr7ETSGTVJEa3fVtmqCr2E6K+iYpdJIGrtHAbpxkYytoEjSFIpFTzJC6WqpRoN1lcCBQxAy/8/9zzpAR+j+PyFvAv7XIo97wB7PK+zPqyIw6Ml2nlPpnPCIqfCaNZCG+DJUp9t/vWNIDIMomlA0epndmhpQODowBaSaY7/v1roTaAZ6EZmJSTs/vxh1Xt9yxQnEAmzF51qN/9c4dEhAzJ/JbmnM/4ewmCiUg5WL4i2ovgOdRipUZqJhJ+65ml3WrrDnbUWUO4b46ACaSaKbzm+NOSbfKuuVC2UAyedO0own4+MPJ0dGcKF9BilE+8ref/rlzVC0dvYriaYCNAHAaA5QsksneMd188qL89OXOs9cQEyibFz/KjY7mfL4gBAy89wnABsAGxORR5bdHz/cOKiwQnoKy0V+BAZTssxd//M7m7x9WHor8CTHVFBtpRY5f0Qtyevr6z2l7I6pywPO9xyd7hxUWEGeRZNT7AyAmT14ywOEJA0DVENRsZvHHTH49JmWglIocnVCISca+o1uuoC5CTA4qe4+P2eyDyj6SL0NM6ry6PO6S17DKox6rnCaAJfQQYIIUMvHVulbYBZjtBwfIJgeUBXUeYpIquJMrbnLlQXqlOKSyegVqSpCIIJGYyCK4FiQCVeZqtrCT+nZrfKWUul6KybNIIcml9XGnFKwNAEbGXtecoqAuAmxM5HfiTlmzyxNWWcALrDCwiXCzORqBCcQEYDPpbGi2q9lsCcCGiIl+bT3h3OUAM1QwfPE79On3Q+IswKa+zAC61QLcWP31xtovP9x60IrVezdXi0wcNiZbAFamIiba10xBtE2BycuLu4GNuLXDmoApKEblL6Fs8AoJt/2gss8LbP+gsg9xFmAzbW8E6bcpWI07LlTMpoIO7efUhfPqEo/F4M6UdTNlryXt2yn7VtpaSzos0tZtnlA3ACmGoM5H8UJMyrUpaAO0240k9puxNj4v3Oc+uJp1L+64Y47LcuSA1DfFuFMOgltkQJX9soueCk4HkOeCMyBwkl+wHoayCTAB8lzQpM1AUpBiyyK2B3xBHwYmXZrCi/B+sIXscVAN74OGDSFgyroTt0pRZa7n0+u8y2hHu1GP1kCv8gXYSC//pNtF0G7RlMU7mRdlL0AwarRzNKzoCEnKBoBQQa1Oq5S+C7VB9Soc7q3Ao6cH09D0oWv+gDz/jrhU9WnNa5ymUeGSyP1hkvmRF4bcD8BGWH58/5DENz/YMOVKbJjU/fYXjk/r9I2oZBE2U8uber6UWC4lrK0h5WqbRd0KkDSHJOZ4wtri8zdCS+u0Wq3V6OsGgKM8WsPKLFKMCavYbJwo35WGgm4lkANSznZz/gUxhySzFryWOxQ0Rp0Jb3WcR6nv9/2s4Mc4HRR0qJjsU0Exqd86z/t92XkiP8eZs4rxz4BgnDufCDYMyeTsz5b/fETeAugZFv0NLnpBV5e9IvYAAAAASUVORK5CYII=" width="32" height="32" image-rendering="pixelated"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <rect width="16" height="16" fill="#fff"/>
+  <defs>
+    <style>
+      .d{fill:#2F356B}
+      .e{fill:#3C4174}
+      .b{fill:#5A7DCC}
+      .g{fill:#D8E9DA}
+    </style>
+  </defs>
+  <!-- Row 0 -->
+  <rect class="e" x="3" y="2" width="2" height="1"/>
+  <rect class="e" x="11" y="2" width="2" height="1"/>
+  <!-- Row 1 -->
+  <rect class="e" x="2" y="3" width="1" height="1"/>
+  <rect class="b" x="3" y="3" width="2" height="1"/>
+  <rect class="e" x="5" y="3" width="1" height="1"/>
+  <rect class="e" x="10" y="3" width="1" height="1"/>
+  <rect class="b" x="11" y="3" width="2" height="1"/>
+  <rect class="e" x="13" y="3" width="1" height="1"/>
+  <!-- Row 2 -->
+  <rect class="e" x="1" y="4" width="1" height="1"/>
+  <rect class="d" x="2" y="4" width="1" height="1"/>
+  <rect class="g" x="3" y="4" width="2" height="1"/>
+  <rect class="e" x="5" y="4" width="1" height="1"/>
+  <rect class="e" x="10" y="4" width="1" height="1"/>
+  <rect class="g" x="11" y="4" width="2" height="1"/>
+  <rect class="d" x="13" y="4" width="1" height="1"/>
+  <rect class="e" x="14" y="4" width="1" height="1"/>
+  <!-- Row 3 -->
+  <rect class="e" x="0" y="5" width="1" height="1"/>
+  <rect class="b" x="1" y="5" width="1" height="1"/>
+  <rect class="d" x="2" y="5" width="1" height="1"/>
+  <rect class="g" x="3" y="5" width="2" height="1"/>
+  <rect class="e" x="5" y="5" width="1" height="1"/>
+  <rect class="e" x="10" y="5" width="1" height="1"/>
+  <rect class="g" x="11" y="5" width="2" height="1"/>
+  <rect class="d" x="13" y="5" width="1" height="1"/>
+  <rect class="b" x="14" y="5" width="1" height="1"/>
+  <rect class="e" x="15" y="5" width="1" height="1"/>
+  <!-- Row 4 -->
+  <rect class="e" x="0" y="6" width="1" height="1"/>
+  <rect class="b" x="1" y="6" width="1" height="1"/>
+  <rect class="d" x="2" y="6" width="1" height="1"/>
+  <rect class="b" x="3" y="6" width="2" height="1"/>
+  <rect class="d" x="5" y="6" width="6" height="1"/>
+  <rect class="b" x="11" y="6" width="2" height="1"/>
+  <rect class="d" x="13" y="6" width="1" height="1"/>
+  <rect class="b" x="14" y="6" width="1" height="1"/>
+  <rect class="e" x="15" y="6" width="1" height="1"/>
+  <!-- Row 5 -->
+  <rect class="e" x="0" y="7" width="1" height="1"/>
+  <rect class="d" x="1" y="7" width="2" height="1"/>
+  <rect class="b" x="3" y="7" width="2" height="1"/>
+  <rect class="d" x="5" y="7" width="1" height="1"/>
+  <rect class="g" x="6" y="7" width="4" height="1"/>
+  <rect class="d" x="10" y="7" width="1" height="1"/>
+  <rect class="b" x="11" y="7" width="2" height="1"/>
+  <rect class="d" x="13" y="7" width="2" height="1"/>
+  <rect class="e" x="15" y="7" width="1" height="1"/>
+  <!-- Row 6 -->
+  <rect class="e" x="0" y="8" width="1" height="1"/>
+  <rect class="d" x="1" y="8" width="4" height="1"/>
+  <rect class="d" x="5" y="8" width="1" height="1"/>
+  <rect class="b" x="6" y="8" width="4" height="1"/>
+  <rect class="d" x="10" y="8" width="5" height="1"/>
+  <rect class="e" x="15" y="8" width="1" height="1"/>
+  <!-- Row 7 -->
+  <rect class="e" x="0" y="9" width="1" height="1"/>
+  <rect class="d" x="1" y="9" width="14" height="1"/>
+  <rect class="e" x="15" y="9" width="1" height="1"/>
+  <!-- Row 8 -->
+  <rect class="e" x="0" y="10" width="1" height="1"/>
+  <rect class="b" x="1" y="10" width="1" height="1"/>
+  <rect class="d" x="2" y="10" width="4" height="1"/>
+  <rect class="d" x="10" y="10" width="4" height="1"/>
+  <rect class="b" x="14" y="10" width="1" height="1"/>
+  <rect class="e" x="15" y="10" width="1" height="1"/>
+  <!-- Row 9 -->
+  <rect class="e" x="1" y="11" width="1" height="1"/>
+  <rect class="d" x="2" y="11" width="4" height="1"/>
+  <rect class="d" x="10" y="11" width="4" height="1"/>
+  <rect class="e" x="14" y="11" width="1" height="1"/>
+  <!-- Row 10 -->
+  <rect class="e" x="2" y="12" width="1" height="1"/>
+  <rect class="b" x="3" y="12" width="2" height="1"/>
+  <rect class="e" x="5" y="12" width="1" height="1"/>
+  <rect class="e" x="10" y="12" width="1" height="1"/>
+  <rect class="b" x="11" y="12" width="2" height="1"/>
+  <rect class="e" x="13" y="12" width="1" height="1"/>
+  <!-- Row 11 -->
+  <rect class="e" x="3" y="13" width="2" height="1"/>
+  <rect class="e" x="11" y="13" width="2" height="1"/>
 </svg>
