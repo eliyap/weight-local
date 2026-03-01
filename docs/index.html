@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Weights</title>
+    <script type="module" crossorigin>(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))r(n);new MutationObserver(n=>{for(const e of n)if(e.type==="childList")for(const f of e.addedNodes)f.tagName==="LINK"&&f.rel==="modulepreload"&&r(f)}).observe(document,{childList:!0,subtree:!0});function s(n){const e={};return n.integrity&&(e.integrity=n.integrity),n.referrerPolicy&&(e.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?e.credentials="include":n.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function r(n){if(n.ep)return;n.ep=!0;const e=s(n);fetch(n.href,e)}})();const g="dumbbell-tracker",a=[];for(let t=0;t<=7;t++)for(let i=0;i<=2;i++)a.push(15+t*10+i*2.5);const h=15;function b(){try{const t=localStorage.getItem(g);return t?JSON.parse(t):[]}catch{return[]}}function u(t){localStorage.setItem(g,JSON.stringify(t))}function E(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}function y(t){return t%1===0?t.toString():t.toFixed(1)}let o=b(),l=null;const c=document.getElementById("exercise-list"),L=document.getElementById("empty-state");function d(){L.classList.toggle("hidden",o.length>0),c.innerHTML="",o.forEach(i=>{const s=document.createElement("li");s.className="exercise-card";const r=a.indexOf(i.weight),n=r<=0,e=r>=a.length-1;s.innerHTML=`
+      <button class="exercise-name" data-id="${i.id}" data-action="rename">${v(i.name)}</button>
+      <div class="weight-controls">
+        <button class="step-btn" data-id="${i.id}" data-action="dec" ${n?"disabled":""}>▼</button>
+        <div class="weight-display">${y(i.weight)}</div>
+        <button class="step-btn" data-id="${i.id}" data-action="inc" ${e?"disabled":""}>▲</button>
+      </div>
+    `,c.appendChild(s)});const t=document.createElement("li");t.className="add-row",t.innerHTML='<button class="add-btn" data-action="add">+</button>',c.appendChild(t)}function v(t){const i=document.createElement("div");return i.textContent=t,i.innerHTML}function p(t){return o.find(i=>i.id===t)}c.addEventListener("click",t=>{const i=t.target.closest("[data-action]");if(!i)return;const{id:s,action:r}=i.dataset;if(r==="add"){const e=prompt("Exercise name:");e!==null&&e.trim()&&(o.push({id:E(),name:e.trim(),weight:h}),u(o),d());return}const n=p(s);if(n)switch(r){case"inc":{const e=a.indexOf(n.weight);e<a.length-1&&(n.weight=a[e+1]),u(o),d();break}case"dec":{const e=a.indexOf(n.weight);e>0&&(n.weight=a[e-1]),u(o),d();break}case"rename":{const e=prompt("Rename exercise:",n.name);e!==null&&e.trim()&&(n.name=e.trim(),u(o),d());break}}});function m(){l&&(clearTimeout(l),l=null)}c.addEventListener("pointerdown",t=>{const i=t.target.closest(".exercise-card");if(!i)return;const s=i.querySelector(".exercise-name");if(!s)return;const r=s.dataset.id;m(),l=setTimeout(()=>{l=null;const n=p(r);n&&confirm(`Delete "${n.name}"?`)&&(o=o.filter(e=>e.id!==r),u(o),d())},500)});c.addEventListener("pointerup",m);c.addEventListener("pointercancel",m);c.addEventListener("pointermove",t=>{l&&(Math.abs(t.movementX)>5||Math.abs(t.movementY)>5)&&m()});d();</script>
+    <style rel="stylesheet" crossorigin>*{margin:0;padding:0;box-sizing:border-box}:root{--border: #ddd;--text: #1c1c1e;--text-muted: #888;--accent: #34c759;--accent-bg: #eafbef}@media(prefers-color-scheme:dark){:root{--border: #333;--text: #e8e8e8;--text-muted: #777;--accent: #30d158;--accent-bg: #1a3a24}body{background:#111}}body{font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,sans-serif;color:var(--text);-webkit-tap-highlight-color:transparent}#app{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}header{max-width:480px;margin:0 auto;text-align:center;padding:16px}h1{font-size:1.5rem;font-weight:700}#exercise-list{list-style:none}.exercise-card{display:flex;align-items:stretch;border-bottom:1px solid var(--border)}.exercise-card:first-child{border-top:1px solid var(--border)}.exercise-name{flex:1;min-width:0;font-family:inherit;font-size:1rem;font-weight:600;cursor:pointer;padding:16px;border:none;background:none;color:var(--text);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.weight-controls{display:flex;align-items:stretch;flex-shrink:0}.step-btn{width:48px;display:flex;align-items:center;justify-content:center;font-family:inherit;font-size:1rem;font-weight:600;color:var(--accent);background:var(--accent-bg);cursor:pointer;-webkit-user-select:none;user-select:none;border:none;border-left:1px solid var(--border)}.step-btn:disabled{opacity:.3;cursor:default}.weight-display{min-width:70px;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);font-size:1.1rem;font-weight:700;font-variant-numeric:tabular-nums;-webkit-user-select:none;user-select:none}.weight-unit{font-size:.85rem;font-weight:400;color:var(--text-muted);margin-left:4px}.add-row{border-bottom:1px solid var(--border)}.add-btn{width:100%;padding:16px;border:none;background:none;color:var(--text-muted);font-family:inherit;font-size:1.2rem;cursor:pointer;text-align:center}#empty-state{text-align:center;color:var(--text-muted);padding:48px 16px}#empty-state.hidden{display:none}</style>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Weights</h1>
+      </header>
+
+      <ul id="exercise-list"></ul>
+
+      <p id="empty-state">No exercises yet.</p>
+    </div>
+
+  </body>
+</html>

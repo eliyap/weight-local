@@ -5,29 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <title>Dumbbell Tracker</title>
+    <title>Weights</title>
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
     <div id="app">
       <header>
-        <h1>Dumbbell Tracker</h1>
+        <h1>Weights</h1>
       </header>
-
-      <form id="add-form">
-        <input
-          type="text"
-          id="exercise-input"
-          placeholder="New exercise name…"
-          autocomplete="off"
-          required
-        />
-        <button type="submit">Add</button>
-      </form>
 
       <ul id="exercise-list"></ul>
 
-      <p id="empty-state">No exercises yet. Add one above.</p>
+      <p id="empty-state">No exercises yet.</p>
     </div>
 
     <script type="module" src="/src/main.js"></script>

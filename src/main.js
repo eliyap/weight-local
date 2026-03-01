@@ -33,13 +33,10 @@ function formatWeight(w) {
 }
 
 let exercises = loadExercises();
-let deleteConfirmId = null;
-let deleteTimeout = null;
+let longPressTimer = null;
 
 const listEl = document.getElementById("exercise-list");
 const emptyEl = document.getElementById("empty-state");
-const formEl = document.getElementById("add-form");
-const inputEl = document.getElementById("exercise-input");
 
 function render() {
   emptyEl.classList.toggle("hidden", exercises.length > 0);
@@ -52,25 +49,23 @@ function render() {
     const idx = WEIGHTS.indexOf(ex.weight);
     const atMin = idx <= 0;
     const atMax = idx >= WEIGHTS.length - 1;
-    const decLabel = atMin ? "" : formatWeight(ex.weight - WEIGHTS[idx - 1]);
-    const incLabel = atMax ? "" : formatWeight(WEIGHTS[idx + 1] - ex.weight);
 
     li.innerHTML = `
-      <div class="exercise-header">
-        <button class="exercise-name" data-id="${ex.id}" data-action="rename">${escapeHtml(ex.name)}</button>
-        <button class="delete-btn${deleteConfirmId === ex.id ? " confirm" : ""}" data-id="${ex.id}" data-action="delete" aria-label="Delete exercise">
-          ${deleteConfirmId === ex.id ? "?" : "\u00d7"}
-        </button>
-      </div>
+      <button class="exercise-name" data-id="${ex.id}" data-action="rename">${escapeHtml(ex.name)}</button>
       <div class="weight-controls">
-        <button class="step-btn" data-id="${ex.id}" data-action="dec" ${atMin ? "disabled" : ""}>-${decLabel}</button>
-        <div class="weight-display">${formatWeight(ex.weight)}<span class="weight-unit">lbs</span></div>
-        <button class="step-btn" data-id="${ex.id}" data-action="inc" ${atMax ? "disabled" : ""}>+${incLabel}</button>
+        <button class="step-btn" data-id="${ex.id}" data-action="dec" ${atMin ? "disabled" : ""}>\u25BC</button>
+        <div class="weight-display">${formatWeight(ex.weight)}</div>
+        <button class="step-btn" data-id="${ex.id}" data-action="inc" ${atMax ? "disabled" : ""}>\u25B2</button>
       </div>
     `;
 
     listEl.appendChild(li);
   });
+
+  const addLi = document.createElement("li");
+  addLi.className = "add-row";
+  addLi.innerHTML = `<button class="add-btn" data-action="add">+</button>`;
+  listEl.appendChild(addLi);
 }
 
 function escapeHtml(str) {
@@ -83,33 +78,23 @@ function findExercise(id) {
   return exercises.find((e) => e.id === id);
 }
 
-function clearDeleteConfirm() {
-  deleteConfirmId = null;
-  if (deleteTimeout) {
-    clearTimeout(deleteTimeout);
-    deleteTimeout = null;
-  }
-}
-
-// Event: Add exercise
-formEl.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = inputEl.value.trim();
-  if (!name) return;
-
-  exercises.push({ id: generateId(), name, weight: DEFAULT_WEIGHT });
-  saveExercises(exercises);
-  inputEl.value = "";
-  inputEl.blur();
-  render();
-});
-
 // Event: List actions (delegation)
 listEl.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-action]");
   if (!btn) return;
 
   const { id, action } = btn.dataset;
+
+  if (action === "add") {
+    const name = prompt("Exercise name:");
+    if (name !== null && name.trim()) {
+      exercises.push({ id: generateId(), name: name.trim(), weight: DEFAULT_WEIGHT });
+      saveExercises(exercises);
+      render();
+    }
+    return;
+  }
+
   const ex = findExercise(id);
   if (!ex) return;
 
@@ -117,7 +102,6 @@ listEl.addEventListener("click", (e) => {
     case "inc": {
       const i = WEIGHTS.indexOf(ex.weight);
       if (i < WEIGHTS.length - 1) ex.weight = WEIGHTS[i + 1];
-      clearDeleteConfirm();
       saveExercises(exercises);
       render();
       break;
@@ -126,14 +110,12 @@ listEl.addEventListener("click", (e) => {
     case "dec": {
       const i = WEIGHTS.indexOf(ex.weight);
       if (i > 0) ex.weight = WEIGHTS[i - 1];
-      clearDeleteConfirm();
       saveExercises(exercises);
       render();
       break;
     }
 
     case "rename": {
-      clearDeleteConfirm();
       const newName = prompt("Rename exercise:", ex.name);
       if (newName !== null && newName.trim()) {
         ex.name = newName.trim();
@@ -142,25 +124,42 @@ listEl.addEventListener("click", (e) => {
       }
       break;
     }
+  }
+});
 
-    case "delete":
-      if (deleteConfirmId === id) {
-        // Second tap — delete
-        clearDeleteConfirm();
-        exercises = exercises.filter((e) => e.id !== id);
-        saveExercises(exercises);
-        render();
-      } else {
-        // First tap — confirm
-        clearDeleteConfirm();
-        deleteConfirmId = id;
-        render();
-        deleteTimeout = setTimeout(() => {
-          deleteConfirmId = null;
-          render();
-        }, 2000);
-      }
-      break;
+// Event: Long-press to delete
+function clearLongPress() {
+  if (longPressTimer) {
+    clearTimeout(longPressTimer);
+    longPressTimer = null;
+  }
+}
+
+listEl.addEventListener("pointerdown", (e) => {
+  const card = e.target.closest(".exercise-card");
+  if (!card) return;
+  const nameBtn = card.querySelector(".exercise-name");
+  if (!nameBtn) return;
+  const id = nameBtn.dataset.id;
+
+  clearLongPress();
+  longPressTimer = setTimeout(() => {
+    longPressTimer = null;
+    const ex = findExercise(id);
+    if (!ex) return;
+    if (confirm(`Delete "${ex.name}"?`)) {
+      exercises = exercises.filter((e) => e.id !== id);
+      saveExercises(exercises);
+      render();
+    }
+  }, 500);
+});
+
+listEl.addEventListener("pointerup", clearLongPress);
+listEl.addEventListener("pointercancel", clearLongPress);
+listEl.addEventListener("pointermove", (e) => {
+  if (longPressTimer && (Math.abs(e.movementX) > 5 || Math.abs(e.movementY) > 5)) {
+    clearLongPress();
   }
 });
 
