@@ -5,7 +5,7 @@ const path = require("path");
 const srcImage = path.join(
   __dirname,
   "..",
-  "barbell-pixel-art-icon-isolated-600nw-2426875635.jpg.webp"
+  "original.jpg.webp"
 );
 const publicDir = path.join(__dirname, "..", "public");
 if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir);
@@ -24,8 +24,9 @@ async function generate() {
       bottom: side - height - padY,
       left: padX,
       right: side - width - padX,
-      background: { r: 255, g: 255, b: 255, alpha: 0 },
+      background: { r: 255, g: 255, b: 255, alpha: 1 },
     })
+    .flatten({ background: { r: 255, g: 255, b: 255 } })
     .png()
     .toBuffer();
 
